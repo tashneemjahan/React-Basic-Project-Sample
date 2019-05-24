@@ -18,7 +18,7 @@
 
   <script type="text/babel">
     //Friednly Complaex componeng
-    function FriendLy() {
+    function FriendLy(props) {
         var friendlyStyle = {
             display:'inline-block',
             margin:20,
@@ -32,35 +32,35 @@
         }
         return (
             <div style={friendlyStyle}>
-                <Avatar/>
-                <UserName/>
+                <Avatar img={props.img}/>
+                <UserName name={props.name}/>
                 <GetConnected/>
             </div>
         );
     }
     //avatar compoennt
-    function Avatar() {
+    function Avatar(props) {
         var avatarStyle = {
             marginLeft:27,
             marginTop:20,
             width:150,
             height:150,
             borderRadius:"50%"
-
         }
         return(
-            <img src="me.png" alt="myprofile" style={avatarStyle}/>
+            <img src={props.img} alt="myprofile" style={avatarStyle}/>
         );
     }
 //username
-function UserName(){
+function UserName(props){
     var nameStyle = {
         fontSize:24,
+        textAlign: "center",
         fontFamily:"Arial, Helvetica, sans-serif",
         margin:20
     }
         return(
-            <h1 style={nameStyle}>My Profile</h1>
+            <h1 style={nameStyle}>{props.name}</h1>
         );
     }
 
@@ -106,7 +106,10 @@ function UserName(){
 
       //
     ReactDOM.render(
-      <FriendLy/>,
+      <FriendLy
+      name="tashneem"
+      img="me.png"
+      />,
       document.getElementById("app")
     );
   </script>
